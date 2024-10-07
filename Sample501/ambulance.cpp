@@ -1,34 +1,19 @@
-#include "car.h"
 #include <iostream>
+#include "ambulance.h"
 
 using namespace std;
 
-Car::Car() : m_speed(40.0), m_migration(0.0)//ここで初期化
+Ambulance::Ambulance() : m_number(119)//ここで初期化
 {
-	cout << "Carクラスのインスタンス作成" << endl;
+	cout << "Ambulanceクラスのインスタンス作成" << endl;
 }
-Car::~Car()
+Ambulance::~Ambulance()
 {
-	cout << "Carクラスのインスタンス消去" << endl;
-}
-
-double Car::getSpeed()
-{
-	return m_speed;
-}
-double Car::getMigration()
-{
-	return m_migration;
-}
-void Car::setSpeed(double speed)
-{
-	m_speed = speed;
+	cout << "Ambulanceクラスのインスタンス消去" << endl;
 }
 
-//走行する
-void Car::drive(double hour)
+void Ambulance::sevePeople()
 {
-	cout << "時速" << m_speed << "kmで" << hour << "時間走行" << endl;
-	cout << m_speed * hour << "km移動しました。" << endl;
-	m_migration += m_speed * hour;
+	cout << "救急救命活動" << endl
+		<< "呼び出しは" << m_number << "番" << endl;
 }
