@@ -2,19 +2,31 @@
 #include <iostream>
 #include <string>
 using namespace std;
+void compare(int& max, int& min, const int& data)
+{
+	max = max < data ? data : max;
+	min = min > data ? data : min;
+}
 
 int main()
 {
-	//添え字番号を使ったループ
 	vector<int> vec{ 20,11,9,33,40,25 };
 	int max, min;
+
+	//☆
+	max = *max_element(vec.begin(), vec.end());
+	min = *min_element(vec.begin(), vec.end());
+
+	cout << "最大値:" << max << "　最小値：" << min << endl;
+
+
+	//添え字番号を使ったループ
 	max = min = vec[0];//先頭要素で初期化
 	for (int i = 1; i < vec.size(); i++)
 	{
-		if (min > vec[i])min = vec[i];
-
-		if (max < vec[i])max = vec[i];
+		compare(max, min, vec[i]);
 	}
+
 	cout << "最大値:" << max << "　最小値：" << min << endl;
 
 	//イテレーターを使ったループ
@@ -22,9 +34,7 @@ int main()
 
 	for (auto itr = vec.begin(); itr != vec.end(); itr++)
 	{
-		if (min > *itr)min = *itr;
-
-		if (max < *itr)max = *itr;
+		compare(max, min, *itr);
 	}
 	cout << "最大値:" << max << "　最小値：" << min << endl;
 
@@ -33,9 +43,7 @@ int main()
 
 	for (auto i : vec)
 	{
-		if (min > i)min = i;
-
-		if (max < i)max = i;
+		compare(max, min, i);
 	}
 	cout << "最大値:" << max << "　最小値：" << min << endl;
 
